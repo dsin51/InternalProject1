@@ -1,0 +1,9 @@
+CREATE table "EMPLOYEE" (
+    "NAME"       VARCHAR2(20),
+    "ID"         NUMBER(6,0),
+    "USERNAME"   VARCHAR2(20),
+    "PASSWORD"   VARCHAR2(20),
+    "ROLE"       VARCHAR2(20),
+    constraint  "EMPLOYEE_PK" primary key ("ID")
+)
+/
