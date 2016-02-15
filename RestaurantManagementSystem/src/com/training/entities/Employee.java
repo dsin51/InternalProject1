@@ -15,6 +15,12 @@ public class Employee {
 		this.empPwd = empPwd;
 		this.empRole = empRole;
 	}
+	
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getEmpName() {
 		return empName;
 	}

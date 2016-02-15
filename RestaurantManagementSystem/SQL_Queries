@@ -7,3 +7,24 @@ CREATE table "EMPLOYEE" (
     constraint  "EMPLOYEE_PK" primary key ("ID")
 )
 /
+CREATE table "ORDERS" (
+    "ORDERNUMBER" NUMBER,
+    "TABLENUMBER" NUMBER,
+    "WAITERID"    NUMBER,
+    constraint  "ORDERS_PK" primary key ("ORDERNUMBER")
+)
+/
+
+CREATE table "ORDEREDITEMS" (
+    "ORDERNUMBER" NUMBER,
+    "DISHID"      NUMBER,
+    "QUANTITY"    NUMBER,
+    constraint  "ORDEREDITEMS_PK" primary key ("DISHID")
+)
+/
+
+ALTER TABLE "ORDEREDITEMS" ADD CONSTRAINT "ORDEREDITEMS_FK" 
+FOREIGN KEY ("ORDERNUMBER")
+REFERENCES "ORDERS" ("ORDERNUMBER")
+
+/
