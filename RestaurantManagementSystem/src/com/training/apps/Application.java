@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import com.training.daos.EmployeeDAO;
+import com.training.entities.Chef;
 import com.training.entities.Employee;
 import com.training.entities.Orders;
 import com.training.entities.Tables;
@@ -50,15 +51,26 @@ public class Application {
 		tables.add(5);
 		
 		ArrayList<Integer> tableGroup1 = new ArrayList<Integer>();
+		tableGroup1.add(1);
+		tableGroup1.add(2);
+		tableGroup1.add(3);
+		ArrayList<Integer> tableGroup2 = new ArrayList<Integer>();
+		tableGroup2.add(4);
+		tableGroup2.add(5);
 		
+		System.out.println("\n\n\n\n");
 		
+//		Waiter w2 = new Waiter("Rajesh", 102, "rajesh102", "pwd123", "waiter", tableGroup2, 3);
+//		int itemlist[] = {11001,11002,11004};
+//		int itemQuantity[] = {6,3,7};
+//		Hashtable<Integer, Integer> orderedItems = w2.buildOrder(3, itemlist, itemQuantity);
+//		Orders newOrder = new Orders(2002, 4, 102, orderedItems, "pending", w2.getNumberOfCustomers());
+//		w2.placeOrder(newOrder);
 		
-		Waiter w1 = new Waiter("Ramesh", 101, "ramesh101", "pwd", "waiter",tableGroup1, 4);
-		int itemlist[] = {11001,11003,11004};
-		int itemQuantity[] = {2,2,2};
-		Hashtable<Integer, Integer> orderedItems = w1.buildOrder(3, itemlist, itemQuantity);
-		Orders newOrder = new Orders(2001, 2, 101, orderedItems, "preparing", w1.getNumberOfCustomers());
-		w1.placeOrder(newOrder);
+		Chef chef = new Chef();
+		chef.printPendingOrderNumbers();
+		chef.printOrders(2002);
+		
 		
 		
 	}

@@ -1,8 +1,6 @@
 package com.training.daos;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 import com.training.entities.Dishes;
 import com.training.entities.Orders;
@@ -66,14 +64,55 @@ public class OrderDAO implements DAO<Orders>{
 	}
 	@Override
 	public Orders view(int key) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from Orders join ordereditems on orders.ordernumber=ordereditems.ordernumber "
+				+ "where orders.ordernumber="+key;
+		Orders order = null;
+		int orderNumber = 0;
+		int tableNumber =0;
+		int waiterId = 0;
+		int dishId = 0;
+		int quantity = 0;
+		Hashtable<Integer, Integer> orderedItems = new Hashtable<Integer, Integer>();
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				orderNumber = rs.getInt("ordernumber");
+				tableNumber = rs.getInt("tablenumber");
+				waiterId = rs.getInt("waiterid");
+				dishId = rs.getInt("dishid");
+				quantity = rs.getInt("quantity");
+				orderedItems.put(dishId, quantity);
+			}
+			order = new Orders(orderNumber, tableNumber, waiterId, orderedItems, "not-prepared", 4);
+		} catch (SQLException e) {
+			// TODO: handle exception
+		}
+		return order;
+		
 	}
 	@Override
 	public int update(int key, String value) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	
+	public ArrayList<Integer> getPendingOrders()
+	{
+		String sql = "Select * from orders where status='pending'";
+		ArrayList<Integer> pendingOrders = new ArrayList<Integer>();
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				pendingOrders.add(rs.getInt("ordernumber"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+		}
+		return pendingOrders;
+	}
 }

@@ -38,3 +38,10 @@ CREATE table "DISHES" (
     constraint  "DISHES_PK" primary key ("DISHID")
 )
 /
+
+
+select * from Orders join ordereditems on orders.ordernumber=ordereditems.ordernumber;
+
+alter table "ORDERS" add
+("STATUS" VARCHAR2(20) NULL)
+/  
