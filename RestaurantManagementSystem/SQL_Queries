@@ -16,15 +16,25 @@ CREATE table "ORDERS" (
 /
 
 CREATE table "ORDEREDITEMS" (
-    "ORDERNUMBER" NUMBER,
     "DISHID"      NUMBER,
-    "QUANTITY"    NUMBER,
-    constraint  "ORDEREDITEMS_PK" primary key ("DISHID")
+    "ORDERNUMBER" NUMBER,
+    "QUANTITY"    NUMBER
 )
+/
+
+alter table "ORDEREDITEMS" add constraint  "ORDEREDITEMS_PK" primary key ("DISHID","ORDERNUMBER")
 /
 
 ALTER TABLE "ORDEREDITEMS" ADD CONSTRAINT "ORDEREDITEMS_FK" 
 FOREIGN KEY ("ORDERNUMBER")
 REFERENCES "ORDERS" ("ORDERNUMBER")
 
+/
+CREATE table "DISHES" (
+    "DISHID"       NUMBER,
+    "DISHNAME"     VARCHAR2(20),
+    "AVAILABILITY" NUMBER,
+    "PRICE"        NUMBER,
+    constraint  "DISHES_PK" primary key ("DISHID")
+)
 /

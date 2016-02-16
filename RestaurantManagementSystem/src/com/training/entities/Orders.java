@@ -1,16 +1,17 @@
 package com.training.entities;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Orders {
 
 	private int orderNo;
 	private int tableNo;
 	private int waiterId;
-	private ArrayList<Dishes> dishes;
+	private Hashtable<Integer, Integer> dishes;
 	private String status;
 	private int numberOfCustomers;
-	public Orders(int orderNo, int tableNo, int waiterId, ArrayList<Dishes> dishes, String status,
+	public Orders(int orderNo, int tableNo, int waiterId, Hashtable<Integer, Integer> dishes, String status,
 			int numberOfCustomers) {
 		super();
 		this.orderNo = orderNo;
@@ -38,10 +39,10 @@ public class Orders {
 	public void setWaiterId(int waiterId) {
 		this.waiterId = waiterId;
 	}
-	public ArrayList<Dishes> getDishes() {
+	public Hashtable<Integer, Integer> getDishes() {
 		return dishes;
 	}
-	public void setDishes(ArrayList<Dishes> dishes) {
+	public void setDishes(Hashtable<Integer, Integer> dishes) {
 		this.dishes = dishes;
 	}
 	public String getStatus() {
